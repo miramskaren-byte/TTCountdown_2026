@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Take That - The Circus Live Countdown</title>
+    <style>
+        body {
+            background-color: #0d1b2a;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: linear-gradient(145deg, #1b263b, #0d1b2a);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 2px solid #415a77;
+        }
+        img {
+            max-width: 250px;
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(255,255,255,0.2);
+            margin-bottom: 20px;
+        }
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 5px;
+            color: #e0e1dd;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        h2 {
+            font-size: 1.2rem;
+            color: #00b4d8;
+            margin-top: 0;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
+        #countdown {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .time-box {
+            background: #415a77;
+            padding: 15px;
+            border-radius: 10px;
+            min-width: 70px;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.3);
+        }
+        .number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            display: block;
+            color: #fff;
+        }
+        .label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: #e0e1dd;
+            letter-spacing: 1px;
+        }
+        footer {
+            margin-top: 30px;
+            font-size: 0.9rem;
+            color: #a7c957;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Verbatim reference to your image file -->
+    <img src="image.png" alt="Take That The Circus Live 2026">
+    
+    <h1>THE CIRCUS LIVE</h1>
+    <h2>London Stadium • June 27, 2026</h2>
+
+    <div id="countdown">
+        <div class="time-box"><span class="number" id="days">00</span><span class="label">Days</span></div>
+        <div class="time-box"><span class="number" id="hours">00</span><span class="label">Hours</span></div>
+        <div class="time-box"><span class="number" id="minutes">00</span><span class="label">Mins</span></div>
+        <div class="time-box"><span class="number" id="seconds">00</span><span class="label">Secs</span></div>
+    </div>
+
+    <footer>🎪 Featuring Special Guests: The Script & Belinda Carlisle 🎪</footer>
+</div>
+
+<script>
+    // Target event date: Gates open at 17:00 (5:00 PM) on June 27, 2026
+    const concertDate = new Date("June 27, 2026 17:00:00").getTime();
+
+    const updateCountdown = setInterval(function() {
+        const now = new Date().getTime();
+        const distance = concertDate - now;
+
+        // Time calculations
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Display results
+        document.getElementById("days").innerText = days < 10 ? "0" + days : days;
+        document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
+        document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
+        document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
+
+        // If the countdown is finished
+        if (distance < 0) {
+            clearInterval(updateCountdown);
+            document.getElementById("countdown").innerHTML = "<h3>IT'S SHOWTIME! 🐘🎪</h3>";
+        }
+    }, 1000);
+</script>
+
+</body>
+</html>
